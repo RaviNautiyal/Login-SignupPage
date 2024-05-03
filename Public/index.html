@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Welcome Page</title>
+    <style>
+        body {
+            background-color: #1b1717f1;
+            font-family: Arial, sans-serif;
+            text-align: center;
+           
+            margin: 0;
+            padding: 0;
+            height: 100vh;
+            display: flex;  
+            flex-direction: column;
+            justify-content: center;
+        }
+        h1 {
+            color: #e5e5e5;
+            margin-bottom: 20px;
+        }
+        .container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .button{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 10px;
+        }
+        #button1 {
+            padding: 10px 20px;
+           
+            display: flex;
+            justify-content: center;
+
+            background-color: #007bff;
+            color: #fff;
+            
+            border-radius: 5px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+        #button1:hover {
+            background-color: #0056b3;
+        }
+        #button2 {
+            padding: 10px 20px;
+           
+            display: flex;
+            justify-content: center;
+
+            background-color: #007bff;
+            color: #fff;
+            
+            border-radius: 5px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+        #button2:hover {
+            background-color: #0056b3;
+        }
+        .footer{
+            display: flex;
+            justify-content: center;
+            flex-direction: column;
+            align-items: center;
+        }
+        .box{
+            /* border: 2px solid black; */
+            margin-top:  34px;
+            display: flex;
+            justify-content: center;
+            height: 100px;
+            width: 300px;
+            font: bolder;
+            font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div>
+            <h1>Welcome to My  Website!</h1>
+           
+        </div>
+       
+    </div>
+    <div class="footer">
+        <div class="box">
+            <p>This is the assignment of making forms assigned by the Web Development Club</p>
+        </div>
+        <div class="button">
+        <button id = "button1" onclick="redirectToSignup1()">Sign Up</button>
+        <button id = "button2" onclick="redirectToSignup2()">Login</button>
+    </div>
+    </div>
+    <script>
+        function redirectToSignup1() {
+            window.location.href = '/signup';
+        }
+        function redirectToSignup2() {
+            window.location.href = '/login';
+        }
+        // Make an AJAX request to fetch session data
+    let promise = fetch('/sessionData')
+  .then(response => response.json())
+  .then(data => {
+    // Access session data from the response
+    let signupSuccess = data.signupSuccess;
+    console.log('Signup success:', signupSuccess);
+      // Check if the flag for successful signup exists in session storage
+      if (signupSuccess) {
+            // Display pop-up window
+            console.log("Hello")
+            alert('Signup successful! Your data has been stored');
+            // Clear the flag
+            signupSuccess = false;
+        } 
+  })
+  .catch(error => {
+    console.error('Error fetching session data:', error);
+  });
+
+      
+
+    </script>
+</body>
+</html>
